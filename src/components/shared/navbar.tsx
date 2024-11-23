@@ -1,3 +1,4 @@
+import { Categories } from "../landing/category";
 import { LocationDialog } from "../landing/location-dialog";
 import SearchBar from "../landing/search-bar";
 
@@ -10,10 +11,12 @@ const Navbar = () => {
             </div>
             <LocationDialog/>
         </div>
-        <div className="w-[30%] hidden md:flex gap-5">
+        <div className="w-[30%] flex gap-5">
             <SearchBar/>
         </div>
-        <div className="w-[45%]"></div>
+        <div className="w-[45%] flex items-center gap-6">
+            <Categories/>
+        </div>
     </section>
   )
 }
