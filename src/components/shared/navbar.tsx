@@ -1,4 +1,5 @@
 import { Categories } from "../landing/category";
+import { UserDropdownMenu } from "../landing/dropdown-menu";
 import { LocationDialog } from "../landing/location-dialog";
 import SearchBar from "../landing/search-bar";
 
@@ -16,6 +17,7 @@ const Navbar = () => {
         </div>
         <div className="w-[45%] flex items-center gap-6">
             <Categories/>
+            <UserDropdownMenu/>
         </div>
     </section>
   )
