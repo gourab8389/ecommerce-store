@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { Heart } from "lucide-react"
+import WishlistCard from "./wishlist-cards"
 
 export function CartSheet() {
   return (
@@ -26,7 +27,7 @@ export function CartSheet() {
           </SheetDescription>
         </SheetHeader>
         <div className="flex flex-col gap-4 py-4">
-            
+            <WishlistCard/>
         </div>
       </SheetContent>
     </Sheet>
