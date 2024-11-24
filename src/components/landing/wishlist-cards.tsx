@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { Cross, X } from "lucide-react";
 
 const items = [
     {
@@ -68,25 +69,40 @@ const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
 
 const WishlistCard = () => {
   return (
-    <div className="w-full flex flex-col gap-4 items-center justify-center">
-      <div className="flex flex-col gap-2 w-full">
+    <div className="flex flex-col h-full">
+      {/* Scrollable items section */}
+      <div className="flex flex-col space-y-4 mb-4 flex-1 overflow-y-auto no-scrollbar">
         {items.map((item) => (
-          <Card key={item.name} className="w-full flex gap-4 items-center">
-            <div className="">
-                <Image src={item.image} alt={item.name} width={150} height={150} className="shrink-0 rounded-md ml-2" />
+          <Card key={item.name} className="flex gap-4 items-center p-2">
+            <div className="h-full flex w-[50%]">
+              <Image 
+                src={item.image} 
+                alt={item.name} 
+                width={100} 
+                height={100}
+                className="rounded-md object-cover shrink-0"
+              />
             </div>
             <div className="flex flex-col gap-1">
-                <h1 className="font-semibold text-lg">{item.name}</h1>
-                <p className="text-sm">{item.description}</p>
-                <h1 className="font-semibold text-lg text-red-500">₹ {item.price} <span className="text-muted-foreground text-sm">/{item.quantity}gm</span></h1>
+              <h1 className="font-semibold text-lg">{item.name}</h1>
+              <p className="text-sm">{item.description}</p>
+              <div className="flex justify-between">
+              <h1 className="font-semibold text-lg text-red-500">
+                ₹ {item.price} 
+                <span className="text-muted-foreground text-sm">/{item.quantity}gm</span>
+              </h1>
+              <Button size={"icon"} variant={"outline"} className="border-none">
+                <X className="size-6" color="red" />
+              </Button>
+              </div>
             </div>
           </Card>
         ))}
       </div>
-      <div className="flex flex-col items-center gap-4">
-        <h1 className="text-lg font-semibold">Total: {totalPrice}</h1>
-        <Button>Checkout</Button>
-      </div>
+        <div className="flex flex-col items-center gap-4 pb-6">
+          <h1 className="text-lg font-semibold">Total: ₹{totalPrice}</h1>
+          <Button className="w-full">Checkout</Button>
+        </div>
     </div>
   );
 };
